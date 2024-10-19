@@ -1,0 +1,10 @@
+route:
+  receiver: 'jemlab_alerts_inbox'
+  group_wait: 20s
+  group_interval: 5m
+  repeat_interval: 3h
+
+receivers:
+  - name: 'jemlab_alerts_inbox'
+    email_configs:
+      - to: 'jemuelbjeroham@outlook.com'
