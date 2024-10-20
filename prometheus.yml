@@ -7,4 +7,4 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'my_test_appsrv'
     static_configs:
-      - targets: ['my_test_appsrv:7070']
+      - targets: ['my_test_appsrv:9100']

@@ -22,12 +22,12 @@ services:
       - prometheus
   
   my_test_appsrv:
-    image: my_test_appsrv:v1
+    image: my_test_appsrv:v7
     container_name: Jemlab_SRE_AppServer
     networks:
       - jemlab_sre_monitoring
     ports:
-      - 7070:80
+      - 9100:9100
   
   alertmanger:
     image: prom/alertmanager:latest
