@@ -1,0 +1,11 @@
+groups:
+  - name: laptop_alerts
+    rules:
+      - alert: HighLaptopCPU
+        expr: laptop_cpu_usage_percent > 70
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU Utilization on Laptop"
+          description: "Laptop CPU is spiking higher than 70 percent for more than 1 minute"
