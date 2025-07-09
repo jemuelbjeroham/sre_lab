@@ -20,6 +20,8 @@ services:
       - jemlab_sre_monitoring
     depends_on:
       - prometheus
+    volumes:
+      - grafana_data:/var/lib/grafana
   
   my_test_appsrv:
     image: my_test_appsrv:v7
