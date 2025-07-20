@@ -1,77 +1,31 @@
-🧠 Python + SRE Practice Problems
-Log Analyzer
-Write a function that reads a log file (sample.log) and returns a dictionary with the count of each HTTP status code (e.g., 200, 404, 500).
-Use: file handling, dictionary, regex
+🧠 Python Practice Problems for SRE Role:
 
-Disk Space Checker
-Given a dictionary of servers with disk usage in percentage:
+1. Log Aggregator (Dictionary + List):
+Write a Python function that takes a list of log entries (each a string in the format "[ERROR] Disk full at /dev/sda1"), and returns a dictionary where the key is the log level (INFO, WARNING, ERROR) and the value is a list of corresponding messages.
 
-python
-Copy
-Edit
-servers = {"web1": 65, "db1": 91, "cache1": 55, "web2": 88}
-Write a function to return a list of servers with usage above 85%.
-Use: dictionary, list comprehension
+2. Service Health Checker (Regex):
+Given a string containing multiple service status messages like "Service: nginx [UP], Service: mysql [DOWN], Service: redis [UP]", extract and return a list of only the service names that are DOWN using regular expressions.
 
-Retry Decorator
-Write a decorator @retry that retries a function 3 times if it fails with an exception, then raises the error.
-Use: decorators, exception handling
+3. IP Allocator (Lists + Ranges):
+Write a function that receives a subnet range (like 192.168.1.0/29) and returns a list of usable IPs (excluding network and broadcast addresses). You may use the ipaddress module.
 
-IP Address Validator
-Write a function to validate a list of IP addresses using regex. Return only valid IPs.
-Input:
+4. Decorator for Retry Logic (Decorators):
+Write a decorator called @retry_on_failure that retries a function up to 3 times if it raises an exception, with a 1-second delay between retries.
 
-python
-Copy
-Edit
-ips = ['192.168.1.1', '10.300.12.3', '172.16.0.256', '172.16.0.1']
-Use: regex, lists
+5. Config Validator (Regex + Dict):
+Given a list of strings representing configuration lines like "hostname=webserver1", "ip=192.168.1.10", "port=8080", validate each line using regex and return a dictionary. If the config line is malformed, skip it.
 
-Service Uptime Parser
-Given a list of strings from uptime command outputs like:
+6. Disk Usage Analyzer (List + Dict):
+Given a list of tuples like [('sda1', 40), ('sda2', 80), ('sda3', 90)] where the first element is the disk name and the second is usage in %, write a function that returns disks with usage above 75%.
 
-css
-Copy
-Edit
-["10:23:45 up 12 days, 3:45, 1 user, load average: 0.12, 0.11, 0.13"]
-Write a function to extract how many days each system has been up.
-Use: regex, string parsing, list
+7. Custom Iterator for Service Status:
+Create a class ServiceStatusIterator that iterates over a dictionary like {'nginx': 'running', 'mysql': 'stopped'} and yields formatted strings like "nginx is running".
 
-SSH Port Mapper
-You have a dictionary of servers and ports:
+8. Port Availability Filter (Lists + Sets):
+Write a function that takes two lists: open_ports = [22, 80, 443] and required_ports = [21, 22, 23, 80] and returns a list of ports that are required but not open.
 
-python
-Copy
-Edit
-ports = {'web1': 22, 'web2': 22, 'db1': 2222, 'cache': 2200}
-Write a function that inverts the dictionary, mapping port to a list of hostnames.
-Use: dictionary, defaultdict
+9. Grouping Logs by Day (Datetime + Dict):
+Given a list of log timestamps like "2025-07-19 10:22:33" and "2025-07-19 15:40:12", group all log entries by date and return a dictionary with date keys and list of times as values.
 
-Error Tracker
-Write a function that reads a text file and tracks the most common error keyword (e.g., "ERROR", "FAIL", "TIMEOUT"). Return a dictionary with their counts.
-Use: file handling, regex, dictionary
-
-Process Filter
-From a list of process strings like:
-
-css
-Copy
-Edit
-["nginx 1234", "python3 2312", "java 4321", "python3 8765"]
-Filter only python-related processes and return their PIDs as integers.
-Use: list, regex, int conversion
-
-Command Timer (Decorator)
-Create a decorator that measures and prints the time taken to execute a function.
-Use: decorators, time module
-
-System Inventory Merger
-You have two lists of dictionaries:
-
-python
-Copy
-Edit
-sys1 = [{"host": "web1", "ip": "192.168.1.1"}, {"host": "db1", "ip": "192.168.1.2"}]
-sys2 = [{"host": "web2", "ip": "192.168.1.3"}, {"host": "db1", "location": "DC1"}]
-Merge entries with the same host into a single dictionary.
-Use: dictionary, list iteration, merging logic
+10. Parse and Filter Process List (Regex + Lists):
+Given a multiline string simulating ps -aux output, extract all processes with memory usage > 10% using regex and return a list of dictionaries with pid, user, mem, and cmd.
